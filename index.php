@@ -8,7 +8,7 @@ $user = new User();
 
 if(isset($_SESSION['user'])) {
     $user->setUser($userSession->getCurrentUser());
-    include_once 'vistas/home.php';
+    include_once 'view/home.php';
     
 } else if(isset($_POST['username']) && isset($_POST['password'])) {
     // user y password del form
@@ -19,7 +19,7 @@ if(isset($_SESSION['user'])) {
         $userSession->setCurrentUser($userForm);
         $user-> setUser($userForm);
 
-        include_once 'vistas/home.php';
+        include_once 'view/home.php';
     } else {
         $errorLogin = "El usuario y la contraseña no coinciden";
         include_once 'view/login.php';
