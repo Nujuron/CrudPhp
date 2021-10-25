@@ -1,13 +1,35 @@
 <?php
-    $servidor = "localhost";
-    $nombreusuario = "admin";
-    $password = "123!\"·QWE";
-    $db = "db_Drusa";
-
-    $conexion = new mysqli($servidor, $nombreusuario, $password, $db);
-
-    if($conexion->connect_error){
-        die("Connection failed: " . $conexion->connect_error);
+    class DB{
+        private $host;
+        private $db;
+        private $user;
+        private $password;
+        private $charset;
+    
+        public function __construct(){
+            $this->host     = 'localhost';
+            $this->db       = 'db_drusa';
+            $this->user     = 'admin';
+            $this->password = "123!\"·QWE";
+            $this->charset  = 'utf8_unicode_ci';
+        }
+    
+        function connect(){
+        
+            try{
+                
+                $connection = "mysql:host=" . $this->host . ";dbname=" . $this->db . ";charset=" . $this->charset;
+                $options = [
+                    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+                    PDO::ATTR_EMULATE_PREPARES   => false,
+                ];
+                $pdo = new PDO($connection, $this->user, $this->password, $options);
+        
+                return $pdo;
+    
+            }catch(PDOException $e){
+                print_r('Error connection: ' . $e->getMessage());
+            }   
+        }
     }
-
 ?>
