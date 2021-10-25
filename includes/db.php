@@ -10,8 +10,8 @@
             $this->host     = 'localhost';
             $this->db       = 'db_drusa';
             $this->user     = 'admin';
-            $this->password = "123!\"·QWE";
-            $this->charset  = 'utf8_unicode_ci';
+            $this->password = "";
+            $this->charset  = 'utf8mb4';
         }
     
         function connect(){
