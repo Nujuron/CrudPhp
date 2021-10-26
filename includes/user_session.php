@@ -6,10 +6,11 @@ class UserSession {
         session_start();
     }
 
-    public function setCurrentUser($user) {
-        $_SESSION['user'] = $user;
+    public function setCurrentUser($username, $userid) {
+        $_SESSION['user'] = $username;
+        $_SESSION['id'] = $userid;
     }
-
+    
     public function getCurrentUser() {
         return $_SESSION['user'];
     }
