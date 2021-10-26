@@ -7,6 +7,7 @@ class User extends DB {
     private $name;
     private $last_name;
     private $username;
+    private $userid;
 
     public function userExists($user, $pass) {
         // $md5pass = md5($pass);
@@ -30,11 +31,16 @@ class User extends DB {
             $this->name = $currentUser['name'];
             $this->last_name = $currentUser['last_name'];
             $this->username = $currentUser['user_name'];
+            $this->userid = $currentUser['user_id'];
         }
     }
 
     public function getName() {
         return $this->name;
+    }
+
+    public function getUserId() {
+        return $this->userid;
     }
 }
 
