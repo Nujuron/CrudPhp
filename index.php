@@ -16,8 +16,8 @@ if(isset($_SESSION['user'])) {
     $passForm = $_POST['password'];
 
     if($user->userExists($userForm, $passForm)) {
-        $userSession->setCurrentUser($userForm);
         $user-> setUser($userForm);
+        $userSession->setCurrentUser($userForm, $user->getUserId());
 
         include_once 'view/home.php';
     } else {
