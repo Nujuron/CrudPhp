@@ -10,7 +10,7 @@ class Business {
 
     public function __construct($business) {
         $this->id = $business['id'];
-        $this->name = $business['name'];
+        $this->name = $business['business_name'];
         $this->vat_number = $business['vat_number'];
         $this->status = $business['status'];
         $this->email = $business['email'];
