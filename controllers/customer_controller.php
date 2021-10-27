@@ -1,10 +1,11 @@
 <?php
 
-include_once 'db.php';
+include_once 'includes/db.php';
+include_once 'models/Customer.php';
 
 class CustomerController extends DB {
 
-    public function getAllBusiness($userid) {
+    public function getAllCustomers($userid) {
         $query = $this->connect()->prepare(
             'SELECT c.id, c.name, c.last_name, c.status, c.email, c.phone 
             FROM customer c 
@@ -12,14 +13,18 @@ class CustomerController extends DB {
             WHERE r.user_id=:user');
         $query->execute(['user'=> $userid]);
 
+        $customers = array();
         if ($query->rowCount()) {
-            return $query;
-        } else {
-            return ;
+            
+            foreach ($query as $customer) {
+                $newCustomer = new Customer($customer);
+                $customers[] = $newCustomer;
+            }
         }
+
+        return $customers;
     }
     
 }
-
 
 ?>
